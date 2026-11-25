@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.zip
+data/
+dataset/
+*.h5
+*.keras
+opencode.json
