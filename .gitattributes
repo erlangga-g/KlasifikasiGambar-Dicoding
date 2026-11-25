@@ -1,0 +1,16 @@
+# Notebook: dihitung sebagai kode, tampil di language bar GitHub
+*.ipynb linguist-detectable=true linguist-documentation=false
+
+# Opsional — butuh `nbdime config-git --enable` agar berefek
+# *.ipynb diff=ipynb
+
+# Biner: jangan dicoba di-diff sebagai teks
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tflite binary
+*.keras binary
+*.h5 binary
+*.pb binary
+*.bin binary
+*.zip binary
