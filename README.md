@@ -2,12 +2,12 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-orange)
-![Accuracy](https://img.shields.io/badge/validation%20accuracy-97.1%25-brightgreen)
+![Accuracy](https://img.shields.io/badge/validation%20accuracy-97.14%25-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 Proyek akhir kelas **Belajar Machine Learning untuk Pemula** (Dicoding) — klasifikasi gambar
 gestur tangan **rock / paper / scissors** menggunakan Convolutional Neural Network dari nol,
-lengkap dengan evaluasi per kelas, ekspor ke tiga format produksi, dan demo inferensi.
+lengkap dengan evaluasi per kelas, ekspor model ke SavedModel dan TF-Lite, serta demo inferensi.
 
 ## Ringkasan Hasil
 
@@ -19,7 +19,7 @@ lengkap dengan evaluasi per kelas, ekspor ke tiga format produksi, dan demo infe
 | Akurasi validasi (model final) | **97,14%** |
 | Macro F1 | 0,9722 |
 | Jumlah parameter | **111.819** (110.371 trainable) |
-| Format artefak | SavedModel, TF-Lite, TensorFlow.js |
+| Format artefak utama | SavedModel, TF-Lite (ekspor TF.js opsional di Colab) |
 | Target tugas (≥ 85% train & val) | ✅ tercapai |
 
 **Performa per kelas** (874 gambar validasi):
@@ -36,8 +36,8 @@ gestur dengan siluet paling mirip saat jari tertutup sebagian.
 
 ## Dataset
 
-[Sumber](https://github.com/dicodingacademy/assets/releases/download/release/rockpaperscissors.zip)
-(~308 MB, dataset publik *Rock Paper Scissors* oleh Laurence Moroney). Notebook mengunduh dan
+[Sumber dataset Dicoding](https://github.com/dicodingacademy/assets/releases/download/release/rockpaperscissors.zip)
+(~308 MB, berbasis dataset `rps-cv` oleh DrGFreeman). Notebook mengunduh dan
 mengekstrak otomatis.
 
 ```text
@@ -142,7 +142,8 @@ Konversi ke TensorFlow.js memerlukan paket tambahan:
 
 ```bash
 uv add tensorflowjs   # jika konflik dependensi, jalankan konversi di Colab
-# atau: uv pip install tensorflowjs
+# Untuk konversi TensorFlow.js, lebih praktis dijalankan di Google Colab jika tidak ingin
+# menambahkan dependensi konverter ke *environment* lokal.
 ```
 
 ### Catatan TensorFlow ≥ 2.16
@@ -159,7 +160,7 @@ Alternatif: `pip install tf-keras` lalu impor dari `tf_keras.preprocessing.image
 4. Arsitektur model
 5. Training — callbacks, kurva akurasi & loss
 6. Evaluasi — diagnostik model, classification report, confusion matrix, galeri salah prediksi
-7. Export & deployment — SavedModel, TF-Lite (+ verifikasi paritas), TensorFlow.js
+7. Export & deployment — SavedModel, TF-Lite (+ verifikasi paritas), langkah TF.js opsional
 8. Demo prediksi (upload di Colab / folder `assets/samples` di lokal)
 9. Kesimpulan, limitasi, riwayat iterasi, referensi
 
@@ -198,19 +199,12 @@ MIT — lihat `LICENSE`. Dataset mengikuti lisensi sumber aslinya dan dipakai un
 ## Referensi
 
 1. Dicoding Indonesia. *Belajar Machine Learning untuk Pemula* — modul klasifikasi gambar.
-2. Moroney, L. *Rock Paper Scissors* dataset. Kaggle.
+2. DrGFreeman (`Julien de la Bruère-Terreault`). *rps-cv* (Rock Paper Scissors dataset). GitHub.
 3. Chollet, F. *Deep Learning with Python*, 2nd ed. Manning, 2021.
 4. TensorFlow. *Image classification tutorial* — https://www.tensorflow.org/tutorials/images/classification
-5. TensorFlow. *Post-training quantization* & *TensorFlow.js converter*.
+5. TensorFlow. *Post-training quantization* — https://www.tensorflow.org/lite/performance/post_training_quantization
 6. Ioffe, S., & Szegedy, C. (2015). *Batch Normalization*.
 7. Lin, M., Chen, Q., & Yan, S. (2013). *Network In Network* (asal Global Average Pooling).
 
-## Alat Bantu & Kolaborasi
-
-Analisis, debugging, dan penyusunan dokumentasi pada proyek ini dibantu oleh **DeepSeek V4.1 Flash
-Free** yang dijalankan melalui **OpenCode** sebagai asisten coding (AI copilot) — mencakup
-penelusuran penyebab model kolaps pada iterasi pertama, penyusunan ulang sel training/evaluasi,
-penyusunan sel diagnostik, dan draf README ini.
-
-Seluruh keputusan akhir, eksekusi eksperimen, verifikasi hasil, serta tanggung jawab atas isi
-laporan tetap berada pada penulis.
+## Acknowledgments
+Lihat [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) untuk daftar lengkap bantuan AI, sumber dataset, dan tools.
