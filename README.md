@@ -100,19 +100,17 @@ agregat bisa menyamarkan model yang kolaps, sehingga distribusi prediksi per kel
 
 ```text
 KlasifikasiGambar-Dicoding/
-├── Proyek_Akhir_Klasifikasi_Gambar.ipynb   # notebook utama (deliverable)
+├── Proyek_Akhir_Klasifikasi_Gambar.ipynb  # notebook utama (deliverable)
 ├── README.md
-├── pyproject.toml / uv.lock                # dependensi (uv)
-├── models/                                 # artefak ekspor (di-commit)
-│   ├── best.keras
-│   ├── saved_model/
-│   ├── model.tflite
-│   ├── tfjs_model/
-│   └── training_log.csv
+├── pyproject.toml / uv.lock               # dependensi (uv)
+├── models/                                # artefak ekspor
+│   ├── saved_model/                       # di-commit ke GitHub
+│   ├── model.tflite                       # di-commit ke GitHub
+│   └── best.keras                         # checkpoint lokal (tidak di-commit)
 ├── assets/
-│   ├── samples/                            # gambar untuk demo inferensi
-│   └── screenshots/                        # tangkapan layar untuk README
-└── rockpaperscissors/                      # dataset (tidak di-commit, ~308 MB)
+│   ├── samples/                           # gambar untuk demo inferensi
+│   └── screenshots/                       # tangkapan layar untuk README
+└── rockpaperscissors/                     # dataset lokal (tidak di-commit, ~308 MB)
 ```
 
 ## Cara Menjalankan
